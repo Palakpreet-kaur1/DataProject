@@ -1,7 +1,4 @@
 Project Objective:
-
-
-
 The features with their explanation:
 Months_as_customer: can be used to see how loyalty affect
 age: age of the claimant
@@ -50,7 +47,17 @@ fraud_reported: Whether the claim is reported as fraudulent (1) or not (0)
 
 
 
+## Data Cleaning:
+
+This project involved a comprehensive data cleaning pipeline to prepare insurance claims data for analysis and modeling. The key steps included:
+
+- Replaced placeholders (like '?') with meaningful values or nulls.
+- Comprehensive analysis of null values to see what can be done about them.
+- Dropped irrelevant or empty columns (e.g., `_c39`).
+- Checked for duplicates in the datset.
+- Checked and documented outliers using IQR and boxplots.
+- Performed early-stage feature engineering:
+  - Extracted important features such as year for dates.
 
 
 
-My analysis of this data:
