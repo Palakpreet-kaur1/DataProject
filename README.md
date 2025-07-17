@@ -44,6 +44,29 @@ auto_model: Model of the involved vehicle
 auto_year: Year of the involved vehicle
 fraud_reported: Whether the claim is reported as fraudulent (1) or not (0)
 
+# Insurance Fraud Analysis (SQL Project)
+
+## Overview
+This project analyzes insurance claims data to identify fraud patterns, quantify financial exposure, and recommend mitigation strategies. The analysis was conducted using SQL, focusing on fraud detection metrics such as fraud rate and fraud lift.
+
+## Key Highlights
+- Overall fraud rate: 25.7%
+- Fraud exposure: $14.89M (28.23% of total claim value)
+- High-risk segments: Ohio $500 deductible, collision claims, incomplete documentation
+
+## Contents
+- **sql-scripts/**: SQL queries for data cleaning, fraud analysis, and risk segmentation
+- **report/**: Executive summary and full report (Word document)
+- **data/**: Dataset used for analysis (sample or anonymized)
+
+## Tools Used
+- MySQL
+- Git & GitHub
+
+## Author
+Palakpreet 
+
+
 
 
 
