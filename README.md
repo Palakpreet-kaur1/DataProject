@@ -1,86 +1,83 @@
-Project Objective:
-The features with their explanation:
-- Months_as_customer: can be used to see how loyalty affect
-- age: age of the claimant
-- policy_number:
-- policy_bind_date:
-- policy_state: This dataset is from the three states of the US - Illionis, Indiana, Ohio.
-- policy_csl: Coverage limit of the policy in the form of combined single limits
-  - "Combined Single Limit" means there is one total dollar limit that applies to both bodily injury (BI) and property damage (PD) per accident.
-  - This is given in format as 250/500, as per my research which means:
-    - $250,000 = The maximum the insurer will pay per person for injuries in an accident.
-    - $500,000 = The maximum the insurer will pay per accident for all claims combined (bodily injury and property damage together).
-- policy_deductable: An insurance deductible is a specific amount you must spend before your insurance policy pays for some or all of your claims
-- policy_annual_premium: An annual premium in insurance is a fee paid to an insurance provider in exchange for a one-year insurance policy that guarantees payment of benefits for certain covered events
-- Umbrella limit: An umbrella limit refers to the maximum coverage amount provided by an umbrella insurance policy, which is a type of extra liability insurance that sits on top of your existing policies
-- insured_zip: ZIP code of the insured person
-- insured_sex: Gender of the insured person
-- insured_education_level: Education level of the insured person
-- insured_occupation: Occupation of the insured person
-- insured_hobbies: Hobbies of the insured person
-- insured_relationship: Relationship of the insured person with the policyholder
-- capital-gains: Capital gains associated with the incident
-- capital-loss: Capital losses associated with the incident
-- incident_date: Date of the incident
-- incident_type: Type of incident (e.g., single vehicle collision, multi-vehicle collision)
-- collision_type: Type of collision in the incident
-- incident_severity: Severity of the incident
-a- uthorities_contacted: Authorities contacted after the incident
-- incident_state: State in which the incident occurred
-- incident_city: City in which the incident occurred
-- incident_location: Location of the incident
-- incident_hour_of_the_day: Hour of the day when the incident occurred
-- number_of_vehicles_involved: Number of vehicles involved in the incident
-- property_damage: Whether property damage occurred during the incident
-- bodily_injuries: Number of bodily injuries in the incident
-- witnesses: Number of witnesses present during the incident
-- police_report_available: Whether a police report is available for the incident
-- total_claim_amount: Total claim amount associated with the incident
-- injury_claim: Claim amount for injuries
-- property_claim: Claim amount for property damage
-- vehicle_claim: Claim amount for vehicle damage
-- auto_make: Make of the involved vehicle
-- auto_model: Model of the involved vehicle
-- auto_year: Year of the involved vehicle
-- fraud_reported: Whether the claim is reported as fraudulent (1) or not (0)
+# Insurance Fraud Analysis (SQL, Power BI, Python)
 
-# Insurance Fraud Analysis (SQL Project)
+## **Overview**
+This project focuses on detecting insurance fraud by analyzing 1,000 claims using **SQL**, **Power BI**, and **Python**. The objective is to uncover fraud patterns, quantify financial exposure, and provide actionable business recommendations to reduce fraud leakage. Fraudulent claims can significantly affect profitability, inflate loss ratios, and increase costs for honest customers, making fraud detection a critical part of insurance analytics.
 
-## Overview
-This project analyzes insurance claims data to identify fraud patterns, quantify financial exposure, and recommend mitigation strategies. The analysis was conducted using SQL, focusing on fraud detection metrics such as fraud rate and fraud lift.
+---
 
-## Key Highlights
-- Overall fraud rate: 25.7%
-- Fraud exposure: $14.89M (28.23% of total claim value)
-- High-risk segments: Ohio $500 deductible, collision claims, incomplete documentation
+## **Key Highlights**
+- **Overall Fraud Rate:** 25.7% of claims flagged as fraudulent.
+- **Total Fraud Exposure:** $14.89M, representing **28.23% of total claim value ($52.76M)**.
+- **High-Risk Segments Identified:**
+  - **Ohio ($500 deductible):** 62.5% fraud rate (Lift = 2.53).
+  - **Collision claims (single and multi-vehicle):** ~27–29% fraud rate with **average claim > $60K**.
+  - **Incomplete documentation (UNKNOWN property damage or police reports):** Fraud ~29–32%.
+- Estimated **$1.49M savings (10% reduction in fraud exposure)** achievable through targeted fraud mitigation.
 
-## Contents
-- **sql-scripts/**: SQL queries for data cleaning, fraud analysis, and risk segmentation
-- **report/**: Executive summary and full report (Word document)
-- **data/**: Dataset used for analysis (sample or anonymized)
+---
 
-## Tools Used
-- MySQL
-- Git & GitHub
+## **Project Workflow**
+### **1. Data Cleaning (Python)**
+Performed in **Python (pandas, NumPy)** to ensure high-quality analysis:
+- Replaced placeholder values (`?`, `UNKNOWN`) with `NULL` or standardized categories.
+- Checked and corrected inconsistent entries (e.g., inconsistent state codes, missing incident data).
+- Validated numeric ranges for `total_claim_amount` and `policy_deductible`.
+- Exported a cleaned dataset for SQL and Power BI.
 
-## Author
-Palakpreet 
+### **2. SQL Analysis**
+Conducted SQL queries to explore fraud patterns across multiple dimensions:
+- **Fraud Overview:**
+  - Overall fraud rate and total exposure.
+- **Geographic Analysis:**
+  - Fraud count and rate by **state** and **city**.
+  - High-lift **State × Deductible** combinations.
+- **Incident Type:**
+  - Fraud rate and severity (e.g., collisions vs. theft).
+- **Demographic Risk:**
+  - Occupation, education level, and relationship categories linked to fraud.
+- **Operational Gaps:**
+  - Missing property damage or police reports correlated with increased fraud.
+- **Fraud Lift:**
+  - Identified segments with 2x–3x fraud risk compared to baseline.
 
+### **3. Power BI Dashboard**
+Created an interactive dashboard to visualize key findings:
+- **KPI Cards:** Overall fraud rate, fraud exposure, total claims, % fraud by dollar amount.
+- **Charts:**
+  - **Bar Charts:** Fraud rate by incident type and deductible.
+  - **Maps:** Geographic fraud distribution (by state).
+  - **Donut/Pie Charts:** Fraud vs. non-fraud counts.
+  - **Matrix Table:** Fraud lift by State × Deductible.
+  - **Box & Whisker:** Claim amount distribution for fraud vs. non-fraud.
+- Dashboard highlights actionable segments for investigation and underwriting.
 
+---
 
+## **Key Insights**
+- Fraudulent claims are **not only frequent (25.7%) but also high-severity**, accounting for **28.23% of payout dollars**.
+- **Ohio $500 deductible** policies have the highest fraud lift (2.53), making them a top priority for investigation.
+- **Collision claims (single & multi-vehicle)** are responsible for a large portion of fraud exposure.
+- Missing or incomplete documentation correlates strongly with higher fraud rates.
+- Targeting just **10% of fraudulent dollars** in top-risk segments could yield **$1.49M in savings**.
 
+---
 
-## Data Cleaning:
+## **Business Impact**
+- **Underwriting & Pricing:** Adjust pricing/deductible rules for high-fraud geographies.
+- **Fraud Detection:** Use identified patterns to train predictive models.
+- **Operational Efficiency:** Flag incomplete documentation for further review.
+- **Cost Savings:** Reduce fraud leakage through SIU focus on high-lift segments.
 
-This project involved a comprehensive data cleaning pipeline to prepare insurance claims data for analysis and modeling. The key steps included:
+---
 
-- Replaced placeholders (like '?') with meaningful values or nulls.
-- Comprehensive analysis of null values to see what can be done about them.
-- Dropped irrelevant or empty columns (e.g., `_c39`).
-- Checked for duplicates in the datset.
-- Checked and documented outliers using IQR and boxplots.
-- Performed early-stage feature engineering:
-  - Extracted important features such as year for dates.
+## **Tools & Technologies**
+- **SQL:** MySQL (analysis and reporting).
+- **Power BI:** Visualization and dashboard building.
+- **Python:** Data cleaning (pandas, NumPy).
+- **Git & GitHub:** Version control and portfolio sharing.
+
+---
+
 
 
 
