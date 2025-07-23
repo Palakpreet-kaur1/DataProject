@@ -108,7 +108,7 @@ It covers three states in the U.S. (\*\*Illinois, Indiana, Ohio\*\*) and include
 
 \- \*\*number\_of\_vehicles\_involved:\*\* Total number of vehicles involved in the incident.  
 
-\- \*\*property\_damage:\*\* Indicates whether property damage occurred.  
+\- \*\*property\_damage:\*\* Indicates whether property damage occurred. The property is not mentioned as to what kind of property. It can be building as well because I saw some inconsistencies in dataset where there was major damage but property damage was no.
 
 \- \*\*bodily\_injuries:\*\* Number of bodily injuries in the incident.  
 
