@@ -21,7 +21,6 @@ This project focuses on detecting insurance fraud by analyzing 1,000 claims usin
 Performed in **Python (pandas, NumPy)** to ensure high-quality analysis:
 - Replaced placeholder values (`?`, `UNKNOWN`) with `NULL` or standardized categories.
 - Checked and corrected inconsistent entries (e.g., inconsistent state codes, missing incident data).
-- Validated numeric ranges for `total_claim_amount` and `policy_deductible`.
 - Exported a cleaned dataset for SQL and Power BI.
 
 ### **2. SQL Analysis**
@@ -46,9 +45,7 @@ Created an interactive dashboard to visualize key findings:
 - **Charts:**
   - **Bar Charts:** Fraud rate by incident type and deductible.
   - **Maps:** Geographic fraud distribution (by state).
-  - **Donut/Pie Charts:** Fraud vs. non-fraud counts.
   - **Matrix Table:** Fraud lift by State × Deductible.
-  - **Box & Whisker:** Claim amount distribution for fraud vs. non-fraud.
 - Dashboard highlights actionable segments for investigation and underwriting.
 
 ---
