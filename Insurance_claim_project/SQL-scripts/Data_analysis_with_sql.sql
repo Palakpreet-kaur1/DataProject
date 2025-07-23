@@ -244,7 +244,7 @@ FROM insurance_claims;
 			  ORDER BY fraud_rate DESC;
               
               
---- Fraud Lift
+--- Example of using 'Fraud Lift'
 WITH base AS (
   SELECT 
     incident_state AS state,
